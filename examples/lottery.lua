@@ -7,6 +7,7 @@ package.path = package.path .. ";../?.lua"
 
 local func = require("functional")
 local foreach, map, bind = func.foreach, func.map, func.bind
+local printTable = bind(foreach, print)
 
 local count = require("count")
 local draws = require("lib.megasena")
@@ -22,6 +23,7 @@ table.sort(ball_register.entries, function(entry1, entry2)
 end)
 
 result = map(function(entry) return entry.label .. ": " .. entry.counter() end, ball_register.entries)
+printTable(result)
 
 
 -- weird draws
